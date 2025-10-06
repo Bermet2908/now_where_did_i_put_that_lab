@@ -5,6 +5,20 @@
 
 #include "../src/where.hpp"
 
-TEST_CASE( "it returns Hello World" ) {
-    REQUIRE( hello() == "Hello World!" );
+TEST_CASE("Find single character in a string") {
+    std::string text = "The quick brown fox";
+
+    REQUIRE(Find(text, 'e') == 2);
+    REQUIRE(Find(text, 'T') == 0);
+    REQUIRE(Find(text, 'z') == -1);
+}
+
+TEST_CASE("Find substring in a string") {
+    std::string text = "The quick brown fox";
+
+    REQUIRE(Find(text, "he") == 1);
+    REQUIRE(Find(text, "quick") == 4);
+    REQUIRE(Find(text, "dog") == -1);
+    REQUIRE(Find(text, "") == 0);
+    REQUIRE(Find("Bema", "Bermet") == -1);
 }
